@@ -17,3 +17,7 @@ test('Does that add function work?', () => {
 test('Is the number even?', () => {
     expect(functions.isEven(2)).toBe(false);
 })
+
+test('Which number is the largest', () => {
+    expect(functions.isMax(1,3,4)).toBe(4);
+})

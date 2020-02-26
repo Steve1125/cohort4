@@ -17,6 +17,16 @@ const functions = {
 
     isEven: (num) => {
         return false;
+    },
+    isMax: (a,b,c) => {
+        let max;
+        if (a < b) {
+            max = b;
+        }
+         if (max < c){
+            max = c;
+        }
+        return max;
     }
 };
 
