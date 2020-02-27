@@ -1,5 +1,6 @@
 
 const functions = {
+
     
     size: (num) => {
         if (num < 10) return "small";
@@ -15,9 +16,6 @@ const functions = {
         return num1 - num2;
     },
 
-    isEven: (num) => {
-        return false;
-    },
     isMax: (a,b,c) => {
         let max;
         if (a < b) {
