@@ -54,4 +54,29 @@ test('change the value of array', () =>{
 //for loop
 test('using for loop to calculate', () => {
     expect(syntax.forTest()).toBe(55);
+});
+
+//for in
+test('for in loop', () => {
+    expect(syntax.forIn()).toBe("Mary Jason 25 ");
+});
+
+//while
+test('while loop test', () => {
+    expect(syntax.while()).toBe(55);
+});
+
+//do while
+test('do while test', () => {
+    expect(syntax.dowhile()).toBe(55);
+});
+
+//for each
+test('for each loop', () => {
+    expect(syntax.foreach()).toBe(55);
+});
+
+//lookup key to retrieve value of object
+test('lookup key to retrieve value', () => {
+    expect(syntax.obj()).toBe("Mary Jason 20");
 })
