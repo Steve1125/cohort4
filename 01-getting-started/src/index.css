@@ -65,6 +65,31 @@ html {
     width: 50px;
 }
 
+/*Calculator*/
+.calculator_container {
+    display: grid;
+    grid-template-columns: repeat(4,50px);
+    grid-template-rows:repeat(3,50px);
+    min-height:40vh; 
+    justify-content: center;
+    
+} 
+.display {
+    grid-column:1/-1;
+    text-align: right;
+    font-size: 2.0em;
+    background-color: #c9c3c3;
+}
+.calculator_keys {
+    display: grid;
+    grid-template-columns: repeat(4,50px);
+    /*grid-template-rows:repeat(3,50px);*/
+    min-height:40vh;
+}
+.equal {
+    grid-row: span 4;
+}
+
 
 /* Turn off parallax scrolling for tablets and phones */
 

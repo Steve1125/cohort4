@@ -3,9 +3,16 @@ const functions = {
 
     
     size: (num) => {
-        if (num < 10) return "small";
-        if (num < 20) return "medium";
-        return "large";
+        if (num < 10) {
+            return "small";
+        }
+        if (num < 20) {
+            return "medium";
+        }
+        if (num <= 100) {
+            return "large";
+        }
+          else  return "extra large";
     },
 
     add: (num1, num2) => {
@@ -16,15 +23,12 @@ const functions = {
         return num1 - num2;
     },
 
-    isMax: (a,b,c) => {
-        let max;
-        if (a < b) {
-            max = b;
-        }
-         if (max < c){
-            max = c;
-        }
-        return max;
+    multiply: (num1, num2) => {
+        return num1 * num2;
+    },
+
+    divide: (num1, num2) => {
+        return num1 / num2;
     }
 };
 
