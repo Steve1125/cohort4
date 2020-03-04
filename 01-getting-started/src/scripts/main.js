@@ -54,10 +54,7 @@ keys.addEventListener('click',e => {
                 operator = "/";
             }
         }
-        // if(action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide'){
-        //     const firstValue = displayNum;
-        //     console.log(firstValue);                    
-        
+         
         if(action === 'calculate'){
             //console.log(displayNum);
             const  firstValue = displayNum.split(operator)[0];
@@ -79,86 +76,3 @@ keys.addEventListener('click',e => {
         }
     }
 })
-// let n1;
-// let n2;
-// let operator;
-
-// num1.addEventListener('click',() => {
-//     rlt.textContent += "1";
-// });
-
-// num2.addEventListener('click',() => {
-//     rlt.textContent += "2";
-// });
-
-// num3.addEventListener('click',() => {
-//     rlt.textContent += "3";
-// });
-
-// num4.addEventListener('click',() => {
-//     rlt.textContent += "4";
-// });
-
-// num5.addEventListener('click',() => {
-//     rlt.textContent += "5";
-// });
-
-// num6.addEventListener('click',() => {
-//     rlt.textContent += "6";
-// });
-
-// num7.addEventListener('click',() => {
-//     rlt.textContent += "7";
-// });
-
-// num8.addEventListener('click',() => {
-//     rlt.textContent += "8";
-// });
-
-// num9.addEventListener('click',() => {
-//     rlt.textContent += "9";
-// });
-
-// num0.addEventListener('click',() => {
-//     rlt.textContent += "0";
-// });
-
-// operatordot.addEventListener('click',() => {
-//     rlt.textContent += ".";
-// });
-
-// operatorplus.addEventListener('click',() => {
-//     number1=rlt.textContent;
-//     operator = "+";
-//     rlt.textContent += "+";
-// });
-
-// operatorminus.addEventListener('click',() => {
-//     number1=rlt.textContent;
-//     operator = "-";
-//     rlt.textContent += "-";
-// });
-
-// operatormulti.addEventListener('click',() => {
-//     number1=rlt.textContent.value;
-//     operator = "*";
-//     rlt.textContent += "*";
-// });
-
-// operatordiv.addEventListener('click',() => {
-//     number1=rlt.textContent.value;
-//     operator = "/";
-//     rlt.textContent += "/";
-// });
-
-//  operatorequal.addEventListener('click',() => {
-//      var r = rlt.textContent.split(n1)[1];
-//      n2=r.substring(1);
-//      console.log(n1);
-//      console.log(r);
-//      if(operator === "+"){
-//          rlt.textContent = functions.add(parseFloat(n1),parseFloat(n2));
-//         }
-     
-
-//  });
