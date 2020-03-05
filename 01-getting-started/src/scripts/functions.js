@@ -29,6 +29,26 @@ const functions = {
 
     divide: (num1, num2) => {
         return num1 / num2;
+    },
+
+    income1: (num1) => {
+        return num1 * 0.15;
+    },
+
+    income2: (num1) => {
+        return num1 * 0.205;
+    },
+
+    income3: (num1) => {
+        return num1 * 0.26;
+    },
+
+    income4: (num1) => {
+        return num1 * 0.29;
+    },
+
+    income5: (num1) => {
+        return num1 * 0.33;
     }
 };
 
