@@ -14,7 +14,4 @@ test('Does that add function work?', () => {
     expect(functions.add(101,202)).toBe(303);
 });
 
-test('Which number is the largest', () => {
-    expect(functions.isMax(1,3,4)).toBe(4);
-})
 
