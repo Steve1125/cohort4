@@ -5,19 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Exercise</title>
     <link rel="stylesheet" type="text/css" href="./dom.css">
-    <link href="./dom.js" type="module">
+    
 </head>
 <body>
-    <div style = "border:solid">
+    <div style = "border:solid" id="idDiv">
         <h2>Basic DOM</h2>
             This is a list of stuff
-            <ol>
+            <ol id="idOl">
                 <li>Item 1</li>
                 <li>Item 2</li>
                 <li>Item 3</li>
             </ol>
-            <button>Show</button>
-            <button>Add</button>
+            <button id="idShow">Show</button>
+            <button id="idAdd">Add</button>
     </div>
+
+    <div class="row">
+        <div class="panel left">
+            <h2>Working with Cards</h2>
+        
+            <div class="clCard">
+                Card
+                <button>Add Before</button>
+                <button>Add After</button>
+                <button>Delete</button>
+            </div>
+                       
+            <button id="idButton">Push Me</button>
+        </div>  
+
+        <div class="panel right">
+            <h2>Right Side<h2>
+        </div>
+
+    </div>
+
+    <script src="./dom.js" type="module"></script>
+
+
 </body>
 </html>
+
