@@ -1,4 +1,9 @@
-/* label {
+body {
+    background-color: cornsilk;
+
+}
+
+label {
     cursor: pointer;
     display: inline-table;
     padding: 3px 5px;
@@ -7,11 +12,11 @@
     vertical-align: top;
 }
 
-button {
+.btn {
     cursor: pointer;
-    display: inline-table;
-    padding: 3px 5px;
+    display: inline-block;
+    padding: 3px 3px;
     text-align: center;
-    width: 90px;
-    
-} */
+    width: 100px;    
+} 
+

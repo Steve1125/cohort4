@@ -4,47 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    
+    <title>Account Information</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Account Information</title>
     <link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 
 <body>
     <h3>Bank Account Information</h3>
-    
-        <div class="account">
-            <label for="name">Account Name:</label>
-            <input type="text" id="idAccName" placeholder="Your Account Name"><br>
-            <label for="balance">Starting Balance:</label>
-            <input type="number" id="idStartBal" placeholder="CAD$"><br>
-            <button id="idAdd" class="btn btn-outline-primary">Add Account</button>
-            
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Account Name</span>
         </div>
-        <div>
-            <label for="selectAcc">Select Your Account</label>
-            <select id="idSel">
-                <option>Select...</option>
-            </select>
-        </div><br>
-        <div>
-            <button class="btn btn-outline-primary">DEPOSIT</button>
-            <input type="number" id="idDeposit" placeholder="CAD$"><br>
-            <button class="btn btn-outline-primary">WITHDRAW</button>
-            <input type="number" id="idWithdraw" placeholder="CAD$">
-        </div><br>
-        <div>
-            <button class="btn btn-outline-primary">Largest Account</button>
-            <input type="text" id="idLarge" placeholder=""><br>
-            <button class="btn btn-outline-primary">Lowest Account</button>
-            <input type="text" id="idLow" placeholder=""><br>
-            <button class="btn btn-outline-primary">Total Balance</button>
-            <input type="text" id="idTotal" placeholder="CAD$"><br>
+        <input type="text" id="idAccName" placeholder="Your Account Name" autocomplete="off"><br>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Starting Balance</span>
         </div>
+        <input type="number" id="idStartBal" placeholder="CAD$" autocomplete="off"><br>
+    </div>
+    <div>
+        <button id="idAdd" class="btn btn-outline-success">ADD</button>
+    </div><br>
 
-    
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Select An Account</span>
+        </div>
+        <select id="idSel">
+            <option selected>Select...</option>
+        </select>
+        <button class="btn btn-outline-success">DEPOSIT</button>
+        <input type="number" id="idDeposit" placeholder="CAD$" style="text-align:right"><br>
+        <button class="btn btn-outline-success">WITHDRAW</button>
+        <input type="number" id="idWithdraw" placeholder="CAD$" style="text-align:right">
+    </div><br>
+
+    <div class="input-group">
+        <button class="btn btn-outline-success">LARGEST</button>
+        <input type="text" id="idLarge" placeholder="" style="text-align:right"><br>
+        <button class="btn btn-outline-success">LOWEST</button>
+        <input type="text" id="idLow" placeholder="" style="text-align:right">
+    </div><br>
+
+    <div class="input-group">
+        <button class="btn btn-outline-success">TOTAL</button>
+        <input type="text" id="idTotal" placeholder="CAD$" style="text-align:right"><br>
+    </div>
 
     <script type='module' src='./scripts/index.js'></script>
 </body>
