@@ -102,4 +102,36 @@ class Community {
 
     }
 }
-export default { City, Community };
+
+function buildCity(name,lati,longi,population) {
+    let div = document.createElement('div');
+    div.setAttribute('class',"card bg-light md-3");
+    div.setAttribute("style","max-width: 15rem");
+
+    let div1 = document.createElement('div1');
+    div1.setAttribute("class","card-header");
+    div1.setAttribute("style","text-align: center");
+    div1.appendChild(document.createTextNode("City: "+name));
+    div.append(div1);
+
+    let div2 = document.createElement('div2');
+    div2.setAttribute("class","card-header");
+    div2.setAttribute("style","text-align: center");
+    div2.appendChild(document.createTextNode("Latitude: "+lati));
+    div.append(div2);
+
+    let div3 = document.createElement('div3');
+    div3.setAttribute("class","card-header");
+    div3.setAttribute("style","text-align: center");
+    div3.appendChild(document.createTextNode("Longitude: "+longi));
+    div.append(div3);
+
+    let div4 = document.createElement('div4');
+    div4.setAttribute("class","card-header");
+    div4.setAttribute("style","text-align: center");
+    div4.appendChild(document.createTextNode("Population: "+population));
+    div.append(div4);
+
+    return div;
+}
+export default { City, Community, buildCity };
