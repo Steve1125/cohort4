@@ -1,9 +1,10 @@
 class City {
-    constructor(name, latitude, longitude, population) {
+    constructor(name, latitude, longitude, population, key) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.population = population
+        this.population = population;
+        this.key = key;
     }
 
     show() {
@@ -42,16 +43,14 @@ class City {
 class Community {
     constructor() {
         this.cityList = [];
+        this.counter = 1;
+    }
+
+    nextKey() {
+        return `${this.counter++}`;
     }
 
     whichSphere(latitude) {
-        // for (let i = 0; i < this.cityList.length; i++) {
-        //     if (this.cityList[i].latitude > 0) {
-        //         return "North Hemisphere";
-        //     } else {
-        //         return "South Hemisphere";
-        //     }
-        // }
         if (latitude > 0) {
             return "North Hemisphere";
         } else {
@@ -90,7 +89,8 @@ class Community {
 
     }
     createCity(name, latitude, longitude, population) {
-        let creCity = new City(name, latitude, longitude, population);
+        const key = this.nextKey();
+        let creCity = new City(name, latitude, longitude, population, key);
         this.cityList.push(creCity);
     }
     deleteCity(cityName) {

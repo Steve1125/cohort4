@@ -1,9 +1,9 @@
 import city from './city.js'
 
-test('city test', () => {
+test('city class test', () => {
     console.log('in the city test');
-    const clCity = new city.City("Calgary", 51, -114, 1300000);
-    const clCity1 = new city.City("Red Deer", 51, -115, 14000);
+    const clCity = new city.City("Calgary", 51, -114, 1300000, "k1");
+    const clCity1 = new city.City("Red Deer", 51, -115, 14000, "k2");
     console.log(clCity.show());
     console.log(clCity1.show());
     expect(clCity.show()).toBe("Calgary 51 -114 1300000");
@@ -70,10 +70,10 @@ test('create city',()=>{
 
     const el = city.buildCity("Calgary",51,-114,1300000);
     //console.log(el.children[0].textContent);
-    expect(el.children[0].textContent).toBe("Calgary");
-    expect(el.children[1].textContent).toBe("51");
-    expect(el.children[2].textContent).toBe("-114");
-    expect(el.children[3].textContent).toBe("1300000");
+    expect(el.children[0].textContent).toBe("City: Calgary");
+    expect(el.children[1].textContent).toBe("Latitude: 51");
+    expect(el.children[2].textContent).toBe("Longitude: -114");
+    expect(el.children[3].textContent).toBe("Population: 1300000");
 
 });
 
