@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MyComponent from './components/MyComponent';
+import MyComponent from './components/MyComponent.js';
 
 class App extends Component {
   constructor() {
@@ -21,13 +21,12 @@ class App extends Component {
 
   }
   render() {
-    return (
-      // <MyComponent
-      // />
+    return (      
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>I am in control of this application and my name is Steve{this.counter}{this.state.myState} </h1>
+          <MyComponent />
           <button onClick={this.onPushMe}>
             Push Me
         </button>
@@ -43,6 +42,7 @@ class App extends Component {
             Learn React
         </a>
         </header>
+        
       </div>
     );
   }
