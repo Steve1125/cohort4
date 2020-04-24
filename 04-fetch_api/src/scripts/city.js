@@ -16,7 +16,7 @@ class City {
             this.population;
     }
 
-    movedIn(num) {
+    moveIn(num) {
         this.population += num;
         return this.population;
     }

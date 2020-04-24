@@ -140,6 +140,27 @@ test('test fetch', async() => {
     expect(data.status).toEqual(400);
     
     //expect(data[1].city).toBe("Calgary");
+});
+
+// 130E Exercise Test
+test('object reference test',()=>{
+    console.log("In the object reference test");
+    const myCity = new city.City("Calgary", 51, -114, 1300000, "k1");
+    expect(myCity.population).toBe(1300000);
+
+    const myFav = myCity;
+    console.log(myFav.population);
+    expect(myFav.population).toBe(1300000);
+
+    myCity.moveIn(200000);
+    expect(myCity.population).toBe(1500000);
+
+    console.log(myFav.population);
+
+    myFav.moveOut(100000);
+    expect(myFav.population).toBe(1400000);
+
+    console.log(myCity.population);
 })
 
 // async function postData(url = '', data = {}) {
