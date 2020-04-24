@@ -33,6 +33,7 @@ test('community test',()=>{
     clCom.createCity("Calgary", 51, -114, 1300000);
     clCom.createCity("Auckland",-36,174,1657000);
     console.log(clCom);
+    
     console.log(clCom.cityList.length);
     expect(clCom.cityList.length).toBe(2);
     expect(clCom.cityList[0].name).toBe("Calgary");
@@ -55,7 +56,7 @@ test('community test',()=>{
     console.log(clCom.getPopulation());
     expect(clCom.getPopulation()).toBe(2957000);
 
-    clCom.deleteCity("Auckland");
+    clCom.deleteCity(2);
     console.log(clCom.cityList.length);
     console.log(clCom.cityList);
     expect(clCom.cityList.length).toBe(1);
@@ -80,11 +81,6 @@ test('create city',()=>{
 global.fetch = require('node-fetch');
 
 const url = 'http://localhost:5000/';
-const cities = [
-    {"key":1, "city":"Calgary", "lat":51.05, "long":-114.05},
-    {"key":2, "city":"Edmonton", "lat":53.55, "long":-113.49},
-    {"key":3, "city":"Red Deer", "lat":52.28, "long":-113.81}
-]
 
 test('test fetch', async() => {
     const cities = [
@@ -92,80 +88,82 @@ test('test fetch', async() => {
         {"key":2, "city":"Edmonton", "lat":53.55, "long":-113.49},
         {"key":3, "city":"Red Deer", "lat":52.28, "long":-113.81}
     ]
-    // Check that the server is running and clear any data
-    let data = await postData(url + 'clear');
 
-    data = await postData(url + 'all');
+    const contl = new city.Community();
+    // Check that the server is running and clear any data
+    let data = await contl.postData(url + 'clear');
+
+    data = await contl.postData(url + 'all');
     expect(data.status).toEqual(200);
     expect(data.length).toBe(0);
 
-    data = await postData(url + 'add', cities[0]);
+    data = await contl.postData(url + 'add', cities[0]);
     expect(data.status).toEqual(200);
 
-    data = await postData(url + 'all');
+    data = await contl.postData(url + 'all');
     expect(data.status).toEqual(200);
     expect(data.length).toBe(1);
     expect(data[0].city).toBe("Calgary");
 
     // add a second with the same key which should be an error
-    data = await postData(url + 'add', cities[0]);
+    data = await contl.postData(url + 'add', cities[0]);
     console.log(data);
     expect(data.status).toEqual(400);
 
     // add a second which should be ok
-    data = await postData(url + 'add', cities[1]);
+    data = await contl.postData(url + 'add', cities[1]);
     expect(data.status).toEqual(200);
 
-    data = await postData(url + 'all');
+    data = await contl.postData(url + 'all');
     expect(data.status).toEqual(200);
     expect(data.length).toBe(2);
     expect(data[1].city).toBe("Edmonton");
 
-    data = await postData(url + 'read', {key:2});
+    data = await contl.postData(url + 'read', {key:2});
     console.log(data);
     expect(data.status).toEqual(200);
     expect(data.length).toBe(1);
     expect(data[0].city).toBe("Edmonton");
 
-    data = await postData(url + 'update', {key:1, city:"Regina"});
+    data = await contl.postData(url + 'update', {key:1, city:"Regina"});
     expect(data.status).toEqual(200);
 
-    data = await postData(url + 'read', {key:1});
+    data = await contl.postData(url + 'read', {key:1});
     expect(data.status).toEqual(200);
     expect(data.length).toBe(1);
     expect(data[0].city).toBe("Regina");
 
-    data = await postData(url + 'delete', {key:1});
+    data = await contl.postData(url + 'delete', {key:1});
     expect(data.status).toEqual(200);
 
-    data = await postData(url + 'read', {key:1});
+    data = await contl.postData(url + 'read', {key:1});
     expect(data.status).toEqual(400);
     
     //expect(data[1].city).toBe("Calgary");
 })
 
-async function postData(url = '', data = {}) {
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: 'POST',     // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors',       // no-cors, *cors, same-origin
-        cache: 'no-cache',  // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow',         // manual, *follow, error
-        referrer: 'no-referrer',    // no-referrer, *client
-        body: JSON.stringify(data)  // body data type must match "Content-Type" header
-    });
+// async function postData(url = '', data = {}) {
+//     // Default options are marked with *
+//     const response = await fetch(url, {
+//         method: 'POST',     // *GET, POST, PUT, DELETE, etc.
+//         mode: 'cors',       // no-cors, *cors, same-origin
+//         cache: 'no-cache',  // *default, no-cache, reload, force-cache, only-if-cached
+//         credentials: 'same-origin', // include, *same-origin, omit
+//         headers: {
+//             'Content-Type': 'application/json'
+//             // 'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//         redirect: 'follow',         // manual, *follow, error
+//         referrer: 'no-referrer',    // no-referrer, *client
+//         body: JSON.stringify(data)  // body data type must match "Content-Type" header
+//     });
 
-    const json = await response.json();    // parses JSON response into native JavaScript objects
-    json.status = response.status;
-    json.statusText = response.statusText;
-    // console.log(json, typeof(json));
-    return json;
-}
+//     const json = await response.json();    // parses JSON response into native JavaScript objects
+//     json.status = response.status;
+//     json.statusText = response.statusText;
+//     // console.log(json, typeof(json));
+//     return json;
+// }
 
 
 

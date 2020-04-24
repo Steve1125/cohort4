@@ -1,10 +1,12 @@
+const url = 'http://localhost:5000/';
+
 class City {
     constructor(name, latitude, longitude, population, key) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.population = population;
-        this.key = key;
+        this.population = Number(population);
+        this.key = Number(key);
     }
 
     show() {
@@ -88,50 +90,111 @@ class Community {
         return totalPop;
 
     }
-    createCity(name, latitude, longitude, population) {
+    async createCity(name, latitude, longitude, population) {
         const key = this.nextKey();
         let creCity = new City(name, latitude, longitude, population, key);
         this.cityList.push(creCity);
-    }
-    deleteCity(cityName) {
-        for (let i = 0; i < this.cityList.length; i++) {
-            if (cityName === this.cityList[i].name) {
-                this.cityList.splice(i, 1);
+        let data = await this.postData(url + 'clear');
+            data = await this.postData(url + 'all');
+            //console.log(data);
+            for (let i = 0; i < this.cityList.length; i++) {
+                data = await this.postData(url + 'add', this.cityList[i]);
+                //console.log(data);
             }
-        }
+    }
 
+    async deleteCity(cityKey) {
+        for (let i = 0; i < this.cityList.length; i++) {
+            if (cityKey === this.cityList[i].key) {
+                this.cityList.splice(i, 1);  
+                await this.postData(url + 'delete', {key:cityKey});              
+            }            
+        }
+    }
+
+    async postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST',     // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors',       // no-cors, *cors, same-origin
+            cache: 'no-cache',  // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow',         // manual, *follow, error
+            referrer: 'no-referrer',    // no-referrer, *client
+            body: JSON.stringify(data)  // body data type must match "Content-Type" header
+        });
+    
+        const json = await response.json();    // parses JSON response into native JavaScript objects
+        json.status = response.status;
+        json.statusText = response.statusText;
+        // console.log(json, typeof(json));
+        return json;
     }
 }
 
-function buildCity(name,lati,longi,population) {
+let counter = 1;
+function buildCity(name, latitude, longitude, population) {    
     let div = document.createElement('div');
-    div.setAttribute('class',"card bg-light md-3");
-    div.setAttribute("style","max-width: 15rem");
+    div.setAttribute('class', "card bg-light md-3");
+    div.setAttribute("style", "max-width: 15rem");
+    div.setAttribute("id", counter++);
 
     let div1 = document.createElement('div1');
-    div1.setAttribute("class","card-header");
-    div1.setAttribute("style","text-align: center");
-    div1.appendChild(document.createTextNode("City: "+name));
+    div1.setAttribute("class", "card-header");
+    div1.setAttribute("style", "text-align: center");
+    div1.appendChild(document.createTextNode("City: " + name));
     div.append(div1);
 
     let div2 = document.createElement('div2');
-    div2.setAttribute("class","card-header");
-    div2.setAttribute("style","text-align: center");
-    div2.appendChild(document.createTextNode("Latitude: "+lati));
+    div2.setAttribute("class", "card-header");
+    div2.setAttribute("style", "text-align: center");
+    div2.appendChild(document.createTextNode("Latitude: " + latitude));
     div.append(div2);
 
     let div3 = document.createElement('div3');
-    div3.setAttribute("class","card-header");
-    div3.setAttribute("style","text-align: center");
-    div3.appendChild(document.createTextNode("Longitude: "+longi));
+    div3.setAttribute("class", "card-header");
+    div3.setAttribute("style", "text-align: center");
+    div3.appendChild(document.createTextNode("Longitude: " + longitude));
     div.append(div3);
 
     let div4 = document.createElement('div4');
-    div4.setAttribute("class","card-header");
-    div4.setAttribute("style","text-align: center");
-    div4.appendChild(document.createTextNode("Population: "+population));
+    div4.setAttribute("class", "card-header");
+    div4.setAttribute("style", "text-align: center");
+    div4.appendChild(document.createTextNode("Population: " + population));
     div.append(div4);
+
+    let btn = document.createElement('button');
+    btn.setAttribute("id", "idDel");
+    btn.appendChild(document.createTextNode('Delete'));
+    div.append(btn);
 
     return div;
 }
+
+// async function postData(url = '', data = {}) {
+//     // Default options are marked with *
+//     const response = await fetch(url, {
+//         method: 'POST',     // *GET, POST, PUT, DELETE, etc.
+//         mode: 'cors',       // no-cors, *cors, same-origin
+//         cache: 'no-cache',  // *default, no-cache, reload, force-cache, only-if-cached
+//         credentials: 'same-origin', // include, *same-origin, omit
+//         headers: {
+//             'Content-Type': 'application/json'
+//             // 'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//         redirect: 'follow',         // manual, *follow, error
+//         referrer: 'no-referrer',    // no-referrer, *client
+//         body: JSON.stringify(data)  // body data type must match "Content-Type" header
+//     });
+
+//     const json = await response.json();    // parses JSON response into native JavaScript objects
+//     json.status = response.status;
+//     json.statusText = response.statusText;
+//     // console.log(json, typeof(json));
+//     return json;
+// }
 export default { City, Community, buildCity };
