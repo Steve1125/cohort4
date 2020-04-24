@@ -169,6 +169,7 @@ function buildCity(name, latitude, longitude, population) {
 
     let btn = document.createElement('button');
     btn.setAttribute("id", "idDel");
+    btn.setAttribute("class","btn-outline-secondary");
     btn.appendChild(document.createTextNode('Delete'));
     div.append(btn);
 
