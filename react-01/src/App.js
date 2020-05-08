@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MyComponent from './components/MyComponent.js';
+import OddComponent from './components/OddComponent.js';
+import EvenComponent from './components/EvenComponent.js';
 
+//const whatToSay = "What Ever";
 class App extends Component {
   constructor() {
     super();
@@ -18,18 +21,21 @@ class App extends Component {
     this.setState({
       myState: "now:" + this.counter
     });
-
   }
+  
   render() {
     return (      
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>I am in control of this application and my name is Steve{this.counter}{this.state.myState} </h1>
-          <MyComponent />
+          <MyComponent whatToSay = {"What Ever"} pushMe = {this.onPushMe}/>
+          {
+          this.counter % 2 === 0? <EvenComponent /> : <OddComponent />
+          }
           <button onClick={this.onPushMe}>
             Push Me
-        </button>
+          </button>
           <p>
             Edit <code>src/App.js</code> and save to reload.
         </p>
