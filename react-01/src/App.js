@@ -5,6 +5,7 @@ import MyComponent from './components/MyComponent.js';
 import OddComponent from './components/OddComponent.js';
 import EvenComponent from './components/EvenComponent.js';
 
+
 //const whatToSay = "What Ever";
 class App extends Component {
   constructor() {
@@ -36,9 +37,12 @@ class App extends Component {
           <button onClick={this.onPushMe}>
             Push Me
           </button>
+          
           <p>
             Edit <code>src/App.js</code> and save to reload.
-        </p>
+          </p>
+          
+          
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -48,6 +52,7 @@ class App extends Component {
             Learn React
         </a>
         </header>
+        
         
       </div>
     );
