@@ -3,12 +3,12 @@
 }
 
 .App-logo {
-  height: 15vmin;
+  height: 13vmin;
   pointer-events: none;
 }
 
 .App-logo-reverse {
-  height: 15vmin;
+  height: 13vmin;
   pointer-events: none;
 }
 
@@ -18,7 +18,7 @@
   }
 
   .App-logo-reverse {
-    animation: App-logo-spin reverse infinite 10s linear;
+    animation: App-logo-spin reverse infinite 5s linear;
   }
 }
 
@@ -61,8 +61,8 @@
 }
 
 .App-header {
-  background-color: #7793c9;
-  min-height: 100vh;
+  background-color: #5972a1;
+  min-height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
