@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import earth from './earth.svg';
 import smile from './smile.svg';
 import sport from './sport.svg';
+// import { ReactComponent as Logo } from './science.svg';
 import science from './science.svg';
 import dna from './dna.svg';
 import microbe from './microbe.svg';
@@ -41,6 +42,7 @@ function App() {
       <header className="App-header">
         <div className="row clearfix">
           <div onClick={myClick} id="Science" className="span_4 column" ikey="starter">
+            {/* <Logo className="App-logo-reverse" /> */}
             <img src={science} className="App-logo-reverse" alt="logo" />
           </div>
           <div onClick={myClick} id="Smile" className="span_4 column" ikey="tictactoe">
